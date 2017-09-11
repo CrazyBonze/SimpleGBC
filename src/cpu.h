@@ -10,13 +10,13 @@ class CPU
     CPU();
     int execute(int cycles);
   private:
+    Register _PC;           // Program Counter
+    Register _SP;           // Stack Pointer
     Register _AF;           // Register AF (Accumulator + Flags)
     Register _BC;           // Register BC (B + C)
     Register _DE;           // Register DE (D + E)
     Register _HL;           // Register HL (H + L)
 
-    uint16_t _PC;           // Program Counter
-    uint16_t _SP;           // Stack Pointer
     uint32_t _flag_C;       // Carry flag
     uint32_t _flag_ZPS;     // Zero, Parity and Negative flags
     uint32_t _flag_Ac;      // Auxilary Carry flag (4-bit carry)
@@ -36,6 +36,7 @@ class CPU
     Memory _main_mem;
 
     int interpret_opcode();
+    int reset_CPU();
     static const unsigned int CPU_FREQ = 4194304;
 };
 

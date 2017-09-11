@@ -1,7 +1,7 @@
 CC=g++
-OPT1=-O1
-OPT2=-O2
-OPT3=-O3
+OPT1=-O1 -fomit-frame-pointer
+OPT2=-O2 -fomit-frame-pointer
+OPT3=-O3 -fomit-frame-pointer
 DEBG=-g
 VER=-std=c++11
 CFLAGS=-Wall -W -Werror -lm -pedantic
@@ -20,6 +20,9 @@ register.o: register.cpp
 
 memory.o: memory.cpp
 	$(CC) $(OPT1) $(DEBG) $(VER) $(CFLAGS) -c memory.cpp
+
+remake:
+	touch *.cpp *.h; make
 
 clean:
 	rm *.o SGBC
